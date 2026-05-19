@@ -1,16 +1,12 @@
 import AsideButton from "./AsideButton";
+import Logo from "./Logo";
 
 const Aside = () => {
   return (
     <div className="min-h-screen bg-slate-900 w-62.5 border-r-slate-700 border-r-2 p-4 flex flex-col justify-between">
       <div>
         {/* LOGO */}
-        <div>
-          <h1 className="text-3xl font-bold font-['sora'] text-sky-500  mb-5">
-            NotesApp
-          </h1>
-        </div>
-
+        <Logo />
         {/* ASIDE BUTTONS */}
 
         <div>
