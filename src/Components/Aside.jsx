@@ -10,9 +10,9 @@ const Aside = () => {
         {/* ASIDE BUTTONS */}
 
         <div>
-          <AsideButton btnName={"Notes"} />
-          <AsideButton btnName={"Archieve"} />
-          <AsideButton btnName={"Trash"} />
+          <AsideButton btnName={"Notes"} link={"/"} />
+          <AsideButton btnName={"Archive"} link={"/archive"} />
+          <AsideButton btnName={"Trash"} link={"/trash"} />
         </div>
       </div>
       {/* can be added user profile viewer and user info after login --in bottom */}
