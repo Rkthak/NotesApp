@@ -10,15 +10,15 @@ const Router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        path: "",
+        index: true,
         element: <Dashboard />,
       },
       {
-        path: "/archive",
+        path: "archive",
         element: <Archive />,
       },
       {
-        path: "/trash",
+        path: "trash",
         element: <Trash />,
       },
     ],
