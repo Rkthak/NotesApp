@@ -3,6 +3,7 @@ import Dashboard from "./Pages/Dashboard";
 import Archive from "./Pages/Archive";
 import Trash from "./Pages/Trash";
 import MainLayout from "./Layout/MainLayout";
+import { NotesContextProvider } from "./Store/NotesContext";
 
 const Router = createBrowserRouter([
   {
@@ -26,7 +27,11 @@ const Router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={Router} />;
+  return (
+    <NotesContextProvider>
+      <RouterProvider router={Router} />
+    </NotesContextProvider>
+  );
 };
 
 export default App;

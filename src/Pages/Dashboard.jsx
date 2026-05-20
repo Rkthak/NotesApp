@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CreateNoteBtn from "../Components/CreateNoteBtn";
 import CreateNoteForm from "../Components/CreateNoteForm";
+import NotesCard from "../Components/NotesCard";
 
 const Dashboard = () => {
   const [showForm, setShowForm] = useState(false);
@@ -14,8 +15,42 @@ const Dashboard = () => {
 
   return (
     <>
+      <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] gap-0.5">
+        <div className="flex">
+          <div>
+            <h2 className="text-3xl text-slate-50 font-['sora'] font-bold">
+              My Notes
+            </h2>
+            <p className="text-slate-400 font-['inter']">
+              Organise your thoughts easily.
+            </p>
+          </div>
+
+          <div className="flex-1 flex items-center justify-end">
+            <input
+              type="search"
+              name=""
+              id=""
+              className="text-slate-50 font-['sora'] px-5 py-2 bg-slate-800 rounded-2xl outline-0 border-2 w-3/5 border-slate-700"
+              placeholder="Search notes.."
+            />
+          </div>
+        </div>
+
+        {/* notes card  */}
+
+        <div className="scrollbar-none overflow-y-auto min-h-0 grid grid-cols-2 justify-items-center gap-4">
+          <NotesCard />
+        </div>
+      </div>
+
+      {/* form handling -- */}
       <CreateNoteBtn fxn={handleDisplayForm} />
-      <CreateNoteForm showForm={showForm} fxn={handleHideForm} />
+      <CreateNoteForm
+        showForm={showForm}
+        setShowForm={setShowForm}
+        handleHideForm={handleHideForm}
+      />
     </>
   );
 };

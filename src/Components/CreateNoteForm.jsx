@@ -1,25 +1,34 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { NotesContext } from "../Store/NotesContext";
 
-const CreateNoteForm = ({ showForm, fxn }) => {
+const CreateNoteForm = ({ showForm, setShowForm, handleHideForm }) => {
   const now = new Date();
   const createdON = now.toLocaleString();
+
+  const { setNotes, notes } = useContext(NotesContext);
 
   const [inputVal, setInputVal] = useState({
     title: "",
     description: "",
     tag: "",
+    isPinned: "",
     isArchived: "",
     isTrashed: "",
     createdAt: "",
   });
   const handleForm = (e) => {
     e.preventDefault();
-    console.log(inputVal);
+
+    setNotes([...notes, inputVal]);
+    localStorage.setItem("Notes", notes);
+
     setInputVal({
       title: "",
       description: "",
       tag: "",
     });
+
+    setShowForm(false);
   };
 
   const handleInputChange = (evt) => {
@@ -31,6 +40,7 @@ const CreateNoteForm = ({ showForm, fxn }) => {
       createdAt: createdON,
       isArchived: false,
       isTrashed: false,
+      isPinned: false,
     });
   };
 
@@ -40,6 +50,7 @@ const CreateNoteForm = ({ showForm, fxn }) => {
       title: "",
       description: "",
       tag: "",
+      isPinned: "",
       isArchived: "",
       isTrashed: "",
       createdAt: "",
@@ -55,12 +66,12 @@ const CreateNoteForm = ({ showForm, fxn }) => {
       }
     >
       <div className="flex justify-end">
-        <span
+        <button
           className=" bg-red-400 hover:shadow-red-200 hover:shadow-2xl hover:scale-90 transition-all px-5 py-1.5 rounded text-slate-50 cursor-pointer font-['sora']"
-          onClick={fxn}
+          onClick={handleHideForm}
         >
           Close
-        </span>
+        </button>
       </div>
       <form className="flex flex-col p-5" onSubmit={handleForm}>
         <input
@@ -103,7 +114,6 @@ const CreateNoteForm = ({ showForm, fxn }) => {
             Create +
           </button>
           <button
-            type="submit"
             className="font-['sora'] text-slate-50 hover:shadow-amber-200 hover:shadow-2xl hover:scale-90 transition-all w-fit px-5 py-1.5 rounded mt-5 mx-5 bg-amber-400 cursor-pointer"
             onClick={resetForm}
           >
