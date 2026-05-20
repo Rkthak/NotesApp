@@ -1,9 +1,22 @@
+import { useState } from "react";
+import CreateNoteBtn from "../Components/CreateNoteBtn";
+import CreateNoteForm from "../Components/CreateNoteForm";
+
 const Dashboard = () => {
+  const [showForm, setShowForm] = useState(false);
+
+  const handleDisplayForm = () => {
+    setShowForm(true);
+  };
+  const handleHideForm = () => {
+    setShowForm(false);
+  };
+
   return (
-    <div>
-      <h1 className="text-amber-50">hello</h1>
-      <h2>world</h2>
-    </div>
+    <>
+      <CreateNoteBtn fxn={handleDisplayForm} />
+      <CreateNoteForm showForm={showForm} fxn={handleHideForm} />
+    </>
   );
 };
 
