@@ -15,8 +15,8 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] gap-0.5">
-        <div className="flex">
+      <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] lg:gap-0.5 gap-4">
+        <div className="flex flex-wrap flex-col lg:flex-row gap-2">
           <div>
             <h2 className="text-3xl text-slate-50 font-['sora'] font-bold">
               My Notes
@@ -31,7 +31,7 @@ const Dashboard = () => {
               type="search"
               name=""
               id=""
-              className="text-slate-50 font-['sora'] px-5 py-2 bg-slate-800 rounded-2xl outline-0 border-2 w-3/5 border-slate-700"
+              className="text-slate-50 font-['sora'] px-5 py-2 bg-slate-800 rounded-2xl outline-0 border-2 lg:w-3/5  w-full border-slate-700"
               placeholder="Search notes.."
             />
           </div>
@@ -39,7 +39,7 @@ const Dashboard = () => {
 
         {/* notes card  */}
 
-        <div className="scrollbar-none overflow-y-auto min-h-0 grid grid-cols-2 justify-items-center gap-4">
+        <div className="scrollbar-none overflow-y-auto min-h-0 grid md:grid-cols-2 justify-items-center gap-4">
           <NotesCard />
         </div>
       </div>

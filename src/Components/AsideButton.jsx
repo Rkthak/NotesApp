@@ -1,6 +1,6 @@
 import { NavLink } from "react-router";
 
-const AsideButton = ({ btnName, link }) => {
+const AsideButton = ({ btnName, link, icon }) => {
   return (
     <>
       <NavLink
@@ -17,7 +17,7 @@ const AsideButton = ({ btnName, link }) => {
           `lg:hidden hover:text-sky-200 transition-all  text-center font-semibold font-['sora'] ${isActive ? "text-sky-500" : "text-slate-50"} `
         }
       >
-        📝 <br />
+        {icon} <br />
         {btnName}
       </NavLink>{" "}
     </>
