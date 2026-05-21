@@ -4,6 +4,7 @@ import Archive from "./Pages/Archive";
 import Trash from "./Pages/Trash";
 import MainLayout from "./Layout/MainLayout";
 import { NotesContextProvider } from "./Store/NotesContext";
+import OneNote from "./Pages/OneNote";
 
 const Router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const Router = createBrowserRouter([
       {
         index: true,
         element: <Dashboard />,
+      },
+      {
+        path: "/:id",
+        element: <OneNote />,
       },
       {
         path: "archive",
