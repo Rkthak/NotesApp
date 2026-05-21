@@ -16,6 +16,17 @@ const NotesCard = () => {
     );
   };
 
+  const handleTrash = (e, id) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setNotes(
+      notes.map((note) =>
+        note.id === id ? { ...note, isTrashed: true } : note,
+      ),
+    );
+  };
+
   return (
     <>
       {notes.filter((note) => !note.isArchived).length == 0 ? (
@@ -30,7 +41,7 @@ const NotesCard = () => {
         </div>
       ) : (
         notes
-          .filter((note) => !note.isArchived)
+          .filter((note) => !note.isArchived && !note.isTrashed)
           .map((note) => (
             <Link to={`/note-${note.id}`} key={note.id}>
               <div className="bg-slate-800 border-2 border-slate-700 rounded-2xl p-3 h-fit  max-w-80 relative">
@@ -76,7 +87,10 @@ const NotesCard = () => {
                       >
                         Archive
                       </button>
-                      <button className="font-soro text-slate-50 px-4 py-1 border-2 border-red-400 bg-red-400 font-semibold cursor-pointer rounded-xl ml-3">
+                      <button
+                        className="font-soro text-slate-50 px-4 py-1 border-2 border-red-400 bg-red-400 font-semibold cursor-pointer rounded-xl ml-3"
+                        onClick={(e) => handleTrash(e, note.id)}
+                      >
                         Trash
                       </button>
                     </div>

@@ -72,7 +72,7 @@ const Archive = () => {
                           handleUnArchive(e, note.id);
                         }}
                       >
-                        restore
+                        Restore
                       </button>
                       <button className="font-soro text-slate-50 px-4 py-1 border-2 border-red-400 bg-red-400 font-semibold cursor-pointer rounded-xl ml-3">
                         Trash
