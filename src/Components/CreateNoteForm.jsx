@@ -8,7 +8,6 @@ const CreateNoteForm = ({ showForm, setShowForm, handleHideForm }) => {
   const { setNotes, notes } = useContext(NotesContext);
 
   const [inputVal, setInputVal] = useState({
-    id: "",
     title: "",
     description: "",
     tag: "",
@@ -21,7 +20,7 @@ const CreateNoteForm = ({ showForm, setShowForm, handleHideForm }) => {
     e.preventDefault();
 
     setNotes([...notes, inputVal]);
-    localStorage.setItem("Notes", JSON.stringify([...notes, inputVal]));
+    localStorage.setItem("Notes", notes);
 
     setInputVal({
       title: "",
@@ -30,7 +29,6 @@ const CreateNoteForm = ({ showForm, setShowForm, handleHideForm }) => {
     });
 
     setShowForm(false);
-    console.log(notes);
   };
 
   const handleInputChange = (evt) => {
@@ -39,7 +37,6 @@ const CreateNoteForm = ({ showForm, setShowForm, handleHideForm }) => {
     setInputVal({
       ...inputVal,
       [name]: value,
-      id: Date.now(),
       createdAt: createdON,
       isArchived: false,
       isTrashed: false,
@@ -50,7 +47,6 @@ const CreateNoteForm = ({ showForm, setShowForm, handleHideForm }) => {
   const resetForm = () => {
     setInputVal({
       ...inputVal,
-      id: "",
       title: "",
       description: "",
       tag: "",
