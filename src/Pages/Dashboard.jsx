@@ -2,6 +2,7 @@ import { useState } from "react";
 import CreateNoteBtn from "../Components/CreateNoteBtn";
 import CreateNoteForm from "../Components/CreateNoteForm";
 import NotesCard from "../Components/NotesCard";
+import HeaderMessage from "../Components/HeaderMessage";
 
 const Dashboard = () => {
   const [showForm, setShowForm] = useState(false);
@@ -17,14 +18,11 @@ const Dashboard = () => {
     <>
       <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] lg:gap-0.5 gap-4 lg:pb-1 pb-18">
         <div className="flex flex-wrap flex-col lg:flex-row gap-2">
-          <div>
-            <h2 className="text-3xl text-slate-50 font-['sora'] font-bold">
-              My Notes
-            </h2>
-            <p className="text-slate-400 font-['inter']">
-              Organise your thoughts easily.
-            </p>
-          </div>
+          {/* HeaderMessage Comp */}
+          <HeaderMessage
+            mainMessage={"My Notes_🖊️"}
+            secondryMessage={"Organize your thoughts💭 easily."}
+          />
 
           <div className="flex-1 flex items-center justify-end">
             <input

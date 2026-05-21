@@ -29,7 +29,8 @@ const NotesCard = () => {
 
   return (
     <>
-      {notes.filter((note) => !note.isArchived).length == 0 ? (
+      {notes.filter((note) => !note.isArchived && !note.isTrashed).length ==
+      0 ? (
         <div className="w-full">
           <h3 className="font-['sora'] text-slate-50 font-semibold text-2xl capitalize">
             {" "}

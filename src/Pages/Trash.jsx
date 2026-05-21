@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { NotesContext } from "../Store/NotesContext";
+import HeaderMessage from "../Components/HeaderMessage";
 
 const Archive = () => {
   const { notes, setNotes } = useContext(NotesContext);
@@ -23,9 +24,7 @@ const Archive = () => {
 
   return (
     <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] lg:gap-0.5 gap-4 lg:pb-1 pb-18">
-      <h2 className="text-slate-50 font-['sora'] text-3xl font-semibold">
-        Trash
-      </h2>
+      <HeaderMessage mainMessage={"Trash 🗑️"} />
       <div className="scrollbar-none overflow-y-auto min-h-0 grid md:grid-cols-2  gap-4">
         {notes.filter((note) => note.isTrashed).length == 0 ? (
           <div className="w-full">
