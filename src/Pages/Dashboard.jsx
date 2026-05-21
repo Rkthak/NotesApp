@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] lg:gap-0.5 gap-4 lg:pb-1 pb-24">
+      <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] lg:gap-0.5 gap-4 lg:pb-1 pb-18">
         <div className="flex flex-wrap flex-col lg:flex-row gap-2">
           <div>
             <h2 className="text-3xl text-slate-50 font-['sora'] font-bold">
@@ -39,7 +39,7 @@ const Dashboard = () => {
 
         {/* notes card  */}
 
-        <div className="scrollbar-none overflow-y-auto min-h-0 grid md:grid-cols-2 justify-items-center gap-4">
+        <div className="scrollbar-none overflow-y-auto min-h-0 grid md:grid-cols-2  gap-4">
           <NotesCard />
         </div>
       </div>
