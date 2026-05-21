@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] lg:gap-0.5 gap-4">
+      <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] lg:gap-0.5 gap-4 lg:pb-1 pb-24">
         <div className="flex flex-wrap flex-col lg:flex-row gap-2">
           <div>
             <h2 className="text-3xl text-slate-50 font-['sora'] font-bold">
