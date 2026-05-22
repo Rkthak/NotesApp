@@ -7,8 +7,6 @@ const NotesCard = ({
   handleNavigate,
   title,
 }) => {
-  let path = window.location.origin;
-
   return (
     <>
       <div
