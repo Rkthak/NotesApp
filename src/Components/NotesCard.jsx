@@ -2,6 +2,7 @@ const NotesCard = ({
   note,
   handleRedBtn,
   handleYellowBtn,
+  handlePinned,
   yellowBtnName,
   redBtnName,
   handleNavigate,
@@ -22,7 +23,16 @@ const NotesCard = ({
                 ? note.title.slice(0, 15) + " ..."
                 : note.title}
             </h2>
-            <span className=""> 📌</span>
+            <span
+              className="bg-slate-900 p-1 rounded-full border-2 border-slate-700"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handlePinned(e, note.id);
+              }}
+            >
+              📌
+            </span>
           </div>
           <div className="flex justify-between items-center">
             <button className="font-['sora'] text-sm text-sky-500 px-3 py-1 whitespace-nowrap bg-slate-800 rounded-full border-2 border-sky-500">

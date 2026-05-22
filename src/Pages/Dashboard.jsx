@@ -19,26 +19,28 @@ const Dashboard = () => {
   const [selectedTag, setSelectedTag] = useState("All");
 
   // both filtered note
-  const filteredNotes = notes.filter((note) => {
-    // 1. Tag
-    const tagMatch =
-      selectedTag === "All"
-        ? !note.isArchived && !note.isTrashed
-        : note.tag === selectedTag && !note.isArchived && !note.isTrashed;
+  const filteredNotes = notes
+    .filter((note) => {
+      // 1. Tag
+      const tagMatch =
+        selectedTag === "All"
+          ? !note.isArchived && !note.isTrashed
+          : note.tag === selectedTag && !note.isArchived && !note.isTrashed;
 
-    // 2. Search
-    const title = note.title || "";
-    const body = note.body || "";
+      // 2. Search
+      const title = note.title || "";
+      const body = note.body || "";
 
-    const searchMatch =
-      searchVal === ""
-        ? true
-        : title.toLowerCase().includes(searchVal.toLowerCase()) ||
-          body.toLowerCase().includes(searchVal.toLowerCase());
+      const searchMatch =
+        searchVal === ""
+          ? true
+          : title.toLowerCase().includes(searchVal.toLowerCase()) ||
+            body.toLowerCase().includes(searchVal.toLowerCase());
 
-    // return both
-    return tagMatch && searchMatch;
-  });
+      // return both
+      return tagMatch && searchMatch;
+    })
+    .sort((a, b) => b.isPinned - a.isPinned || b.createdAt - a.createdAt);
 
   const navigate = useNavigate();
 
@@ -58,6 +60,14 @@ const Dashboard = () => {
     setNotes(
       notes.map((note) =>
         note.id === id ? { ...note, isTrashed: true } : note,
+      ),
+    );
+  };
+
+  const handlePinned = (e, id) => {
+    setNotes(
+      notes.map((note) =>
+        note.id === id ? { ...note, isPinned: !note.isPinned } : note,
       ),
     );
   };
@@ -103,6 +113,7 @@ const Dashboard = () => {
               <NotesCard
                 key={note.id}
                 note={note}
+                handlePinned={handlePinned}
                 handleYellowBtn={handleArchive}
                 handleRedBtn={handleTrash}
                 yellowBtnName={"Archive"}
