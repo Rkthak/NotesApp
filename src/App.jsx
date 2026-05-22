@@ -5,6 +5,7 @@ import Trash from "./Pages/Trash";
 import MainLayout from "./Layout/MainLayout";
 import { NotesContextProvider } from "./Store/NotesContext";
 import OneNote from "./Pages/OneNote";
+import EditeNote from "./Pages/EditeNote";
 
 const Router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const Router = createBrowserRouter([
       {
         path: "/:id",
         element: <OneNote />,
+      },
+      {
+        path: "/:id/edit",
+        element: <EditeNote />,
       },
       {
         path: "archive",

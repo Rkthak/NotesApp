@@ -79,6 +79,12 @@ const Dashboard = () => {
     setShowForm(false);
   };
 
+  // edit navigation
+
+  const handleEditNavigation = (e, id) => {
+    navigate(`/note-${id}/edit`);
+  };
+
   let path = window.location.origin;
 
   return (
@@ -120,6 +126,7 @@ const Dashboard = () => {
                 redBtnName={"Trash"}
                 handleNavigate={() => handleNavigate(note)}
                 title={`${path}/note-${note.id}`}
+                handleEditNavigation={handleEditNavigation}
               />
             ))
           )}

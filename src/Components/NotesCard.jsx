@@ -6,6 +6,7 @@ const NotesCard = ({
   yellowBtnName,
   redBtnName,
   handleNavigate,
+  handleEditNavigation,
   title,
 }) => {
   return (
@@ -28,7 +29,7 @@ const NotesCard = ({
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                handlePinned(e, note.id);
+                handlePinned?.(e, note.id);
               }}
             >
               📌
@@ -56,6 +57,7 @@ const NotesCard = ({
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
+                handleEditNavigation?.(e, note.id);
               }}
             >
               edit
