@@ -6,19 +6,39 @@ import HeaderMessage from "../Components/HeaderMessage";
 import { NotesContext } from "../Store/NotesContext";
 import { useNavigate } from "react-router";
 import TagsBtn from "../Components/TagsBtn";
+import Search from "../Components/Search";
 
 const Dashboard = () => {
   const [showForm, setShowForm] = useState(false);
   const { notes, setNotes } = useContext(NotesContext);
 
-  const [selectedTag, setSelectedTag] = useState("All");
-  const filterBasedOnTag = notes
-    .filter((note) => {
-      if (selectedTag == "All") return !note.isArchived && !note.isTrashed;
+  // search ====>
+  const [searchVal, setSearchVal] = useState("");
 
-      return note.tag === selectedTag && !note.isArchived && !note.isTrashed;
-    })
-    .map((note) => note);
+  // tags ===>
+  const [selectedTag, setSelectedTag] = useState("All");
+
+  // both filtered note
+  const filteredNotes = notes.filter((note) => {
+    // 1. Tag
+    const tagMatch =
+      selectedTag === "All"
+        ? !note.isArchived && !note.isTrashed
+        : note.tag === selectedTag && !note.isArchived && !note.isTrashed;
+
+    // 2. Search
+    const title = note.title || "";
+    const body = note.body || "";
+
+    const searchMatch =
+      searchVal === ""
+        ? true
+        : title.toLowerCase().includes(searchVal.toLowerCase()) ||
+          body.toLowerCase().includes(searchVal.toLowerCase());
+
+    // return both
+    return tagMatch && searchMatch;
+  });
 
   const navigate = useNavigate();
 
@@ -28,7 +48,7 @@ const Dashboard = () => {
 
   const handleArchive = (e, id) => {
     setNotes(
-      filterBasedOnTag.map((note) =>
+      notes.map((note) =>
         note.id === id ? { ...note, isArchived: true } : note,
       ),
     );
@@ -36,7 +56,7 @@ const Dashboard = () => {
 
   const handleTrash = (e, id) => {
     setNotes(
-      filterBasedOnTag.map((note) =>
+      notes.map((note) =>
         note.id === id ? { ...note, isTrashed: true } : note,
       ),
     );
@@ -61,15 +81,7 @@ const Dashboard = () => {
             secondryMessage={"Organize your thoughts💭 easily."}
           />
 
-          <div className="flex-1 flex items-center justify-end">
-            <input
-              type="search"
-              name=""
-              id=""
-              className="text-slate-50 font-['sora'] px-5 py-2 bg-slate-800 rounded-2xl outline-0 border-2 lg:w-3/5  w-full border-slate-700"
-              placeholder="Search notes.."
-            />
-          </div>
+          <Search searchVal={searchVal} setSearchVal={setSearchVal} />
         </div>
 
         <TagsBtn selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
@@ -77,18 +89,17 @@ const Dashboard = () => {
         {/* notes card  */}
 
         <div className="scrollbar-none overflow-y-auto min-h-0 grid md:grid-cols-2  gap-4">
-          {filterBasedOnTag.length == 0 ? (
+          {filteredNotes.length === 0 ? (
             <div className="w-full">
               <h3 className="font-['sora'] text-slate-50 font-semibold text-2xl capitalize">
-                {" "}
-                no note availble. . .
+                no note available. . .
               </h3>
               <p className=" text-slate-400 font-['inter'] mt-1.5 mb-4">
                 Click add + button to create a note.
               </p>
             </div>
           ) : (
-            filterBasedOnTag.map((note) => (
+            filteredNotes.map((note) => (
               <NotesCard
                 key={note.id}
                 note={note}
