@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { NotesContext } from "../Store/NotesContext";
 import HeaderMessage from "../Components/HeaderMessage";
 
@@ -32,6 +32,11 @@ const OneNote = () => {
     );
   };
 
+  const navigate = useNavigate();
+  const handleEditNavigation = (id) => {
+    navigate(`/note-${id}/edit`);
+  };
+
   return (
     <div className="h-screen overflow-hidden">
       {notes.filter(
@@ -57,7 +62,9 @@ const OneNote = () => {
                 <HeaderMessage mainMessage={`${item.title}`} />
 
                 <p className="font-['inter'] bg-amber-300 px-4 py-1.5 rounded-2xl text-slate-950">
-                  {item.createdAt}
+                  {item.isEdit
+                    ? `edited on : ${item.editedAt}`
+                    : `created at : ${item.createdAt}`}
                 </p>
               </div>
 
@@ -70,9 +77,8 @@ const OneNote = () => {
                 >
                   <button
                     className="font-['sora'] block my-4 w-full text-slate-50 px-4 py-1 border-2 border-slate-700 bg-slate-900 font-semibold cursor-pointer rounded-xl"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
+                    onClick={() => {
+                      handleEditNavigation(item.id);
                     }}
                   >
                     edit
@@ -102,7 +108,6 @@ const OneNote = () => {
                   Actions
                 </button>
               </div>
-
               <div className="overflow-y-auto mt-4 scrollbar-none">
                 <p className="text-slate-400 text-justify font-['inter']">
                   {item.description}
