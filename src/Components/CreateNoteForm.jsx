@@ -67,7 +67,7 @@ const CreateNoteForm = ({ showForm, setShowForm, handleHideForm }) => {
           : `hidden`
       }
     >
-      <div className="flex justify-end">
+      <div className="flex justify-end mt-8">
         <button
           className=" bg-red-400 hover:shadow-red-200 hover:shadow-2xl hover:scale-90 transition-all px-5 py-1.5 rounded text-slate-50 cursor-pointer font-['sora']"
           onClick={handleHideForm}

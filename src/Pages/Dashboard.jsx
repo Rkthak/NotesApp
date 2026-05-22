@@ -1,11 +1,36 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CreateNoteBtn from "../Components/CreateNoteBtn";
 import CreateNoteForm from "../Components/CreateNoteForm";
 import NotesCard from "../Components/NotesCard";
 import HeaderMessage from "../Components/HeaderMessage";
+import { NotesContext } from "../Store/NotesContext";
+import { useNavigate } from "react-router";
 
 const Dashboard = () => {
   const [showForm, setShowForm] = useState(false);
+  const { notes, setNotes } = useContext(NotesContext);
+
+  const navigate = useNavigate();
+
+  const handleNavigate = (note) => {
+    navigate(`/note-${note.id}`);
+  };
+
+  const handleArchive = (e, id) => {
+    setNotes(
+      notes.map((note) =>
+        note.id === id ? { ...note, isArchived: true } : note,
+      ),
+    );
+  };
+
+  const handleTrash = (e, id) => {
+    setNotes(
+      notes.map((note) =>
+        note.id === id ? { ...note, isTrashed: true } : note,
+      ),
+    );
+  };
 
   const handleDisplayForm = () => {
     setShowForm(true);
@@ -13,6 +38,8 @@ const Dashboard = () => {
   const handleHideForm = () => {
     setShowForm(false);
   };
+
+  let path = window.location.origin;
 
   return (
     <>
@@ -38,7 +65,33 @@ const Dashboard = () => {
         {/* notes card  */}
 
         <div className="scrollbar-none overflow-y-auto min-h-0 grid md:grid-cols-2  gap-4">
-          <NotesCard />
+          {notes.filter((note) => !note.isArchived && !note.isTrashed).length ==
+          0 ? (
+            <div className="w-full">
+              <h3 className="font-['sora'] text-slate-50 font-semibold text-2xl capitalize">
+                {" "}
+                no note availble. . .
+              </h3>
+              <p className=" text-slate-400 font-['inter'] mt-1.5 mb-4">
+                Click add + button to create a note.
+              </p>
+            </div>
+          ) : (
+            notes
+              .filter((note) => !note.isArchived && !note.isTrashed)
+              .map((note) => (
+                <NotesCard
+                  key={note.id}
+                  note={note}
+                  handleYellowBtn={handleArchive}
+                  handleRedBtn={handleTrash}
+                  yellowBtnName={"Archive"}
+                  redBtnName={"Trash"}
+                  handleNavigate={() => handleNavigate(note)}
+                  title={`${path}/note-${note.id}`}
+                />
+              ))
+          )}
         </div>
       </div>
 
