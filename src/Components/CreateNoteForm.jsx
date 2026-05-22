@@ -116,6 +116,7 @@ const CreateNoteForm = ({ showForm, setShowForm, handleHideForm }) => {
             Create +
           </button>
           <button
+            type="button"
             className="font-['sora'] text-slate-50 hover:shadow-amber-200 hover:shadow-2xl hover:scale-90 transition-all w-fit px-5 py-1.5 rounded mt-5 mx-5 bg-amber-400 cursor-pointer"
             onClick={resetForm}
           >
