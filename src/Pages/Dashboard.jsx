@@ -5,10 +5,20 @@ import NotesCard from "../Components/NotesCard";
 import HeaderMessage from "../Components/HeaderMessage";
 import { NotesContext } from "../Store/NotesContext";
 import { useNavigate } from "react-router";
+import TagsBtn from "../Components/TagsBtn";
 
 const Dashboard = () => {
   const [showForm, setShowForm] = useState(false);
   const { notes, setNotes } = useContext(NotesContext);
+
+  const [selectedTag, setSelectedTag] = useState("All");
+  const filterBasedOnTag = notes
+    .filter((note) => {
+      if (selectedTag == "All") return !note.isArchived && !note.isTrashed;
+
+      return note.tag === selectedTag && !note.isArchived && !note.isTrashed;
+    })
+    .map((note) => note);
 
   const navigate = useNavigate();
 
@@ -18,7 +28,7 @@ const Dashboard = () => {
 
   const handleArchive = (e, id) => {
     setNotes(
-      notes.map((note) =>
+      filterBasedOnTag.map((note) =>
         note.id === id ? { ...note, isArchived: true } : note,
       ),
     );
@@ -26,7 +36,7 @@ const Dashboard = () => {
 
   const handleTrash = (e, id) => {
     setNotes(
-      notes.map((note) =>
+      filterBasedOnTag.map((note) =>
         note.id === id ? { ...note, isTrashed: true } : note,
       ),
     );
@@ -62,11 +72,12 @@ const Dashboard = () => {
           </div>
         </div>
 
+        <TagsBtn selectedTag={selectedTag} setSelectedTag={setSelectedTag} />
+
         {/* notes card  */}
 
         <div className="scrollbar-none overflow-y-auto min-h-0 grid md:grid-cols-2  gap-4">
-          {notes.filter((note) => !note.isArchived && !note.isTrashed).length ==
-          0 ? (
+          {filterBasedOnTag.length == 0 ? (
             <div className="w-full">
               <h3 className="font-['sora'] text-slate-50 font-semibold text-2xl capitalize">
                 {" "}
@@ -77,20 +88,18 @@ const Dashboard = () => {
               </p>
             </div>
           ) : (
-            notes
-              .filter((note) => !note.isArchived && !note.isTrashed)
-              .map((note) => (
-                <NotesCard
-                  key={note.id}
-                  note={note}
-                  handleYellowBtn={handleArchive}
-                  handleRedBtn={handleTrash}
-                  yellowBtnName={"Archive"}
-                  redBtnName={"Trash"}
-                  handleNavigate={() => handleNavigate(note)}
-                  title={`${path}/note-${note.id}`}
-                />
-              ))
+            filterBasedOnTag.map((note) => (
+              <NotesCard
+                key={note.id}
+                note={note}
+                handleYellowBtn={handleArchive}
+                handleRedBtn={handleTrash}
+                yellowBtnName={"Archive"}
+                redBtnName={"Trash"}
+                handleNavigate={() => handleNavigate(note)}
+                title={`${path}/note-${note.id}`}
+              />
+            ))
           )}
         </div>
       </div>
