@@ -42,7 +42,7 @@ const NotesCard = ({
 
           <div className="flex justify-between items-center">
             <button
-              className="font-soro text-slate-50 px-4 py-1 border-2 border-slate-700 bg-slate-900 font-semibold cursor-pointer rounded-xl"
+              className="font-['sora'] text-slate-50 px-4 py-1 border-2 border-slate-700 bg-slate-900 font-semibold cursor-pointer rounded-xl"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -52,7 +52,7 @@ const NotesCard = ({
             </button>
             <div className="">
               <button
-                className="font-soro text-slate-50 px-4 py-1 border-2 border-amber-400 bg-amber-400 font-semibold cursor-pointer rounded-xl ml-3 "
+                className="font-['sora'] text-slate-50 px-4 py-1 border-2 border-amber-400 bg-amber-400 font-semibold cursor-pointer rounded-xl ml-3 "
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
@@ -62,7 +62,7 @@ const NotesCard = ({
                 {yellowBtnName}
               </button>
               <button
-                className="font-soro text-slate-50 px-4 py-1 border-2 border-red-400 bg-red-400 font-semibold cursor-pointer rounded-xl ml-3"
+                className="font-['sora'] text-slate-50 px-4 py-1 border-2 border-red-400 bg-red-400 font-semibold cursor-pointer rounded-xl ml-3"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
