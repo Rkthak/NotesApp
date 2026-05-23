@@ -58,7 +58,7 @@ const OneNote = () => {
               key={item.id}
               className="h-full p-5 pb-24 lg:pb-5 grid grid-rows-[auto_auto_1fr]"
             >
-              <div className="flex flex-col-reverse md:flex-row justify-between md:items-center mb-4 gap-4">
+              <div className="flex flex-col-reverse md:flex-row justify-between md:items-center mb-4 gap-4 capitalize">
                 <HeaderMessage mainMessage={`${item.title}`} />
 
                 <p className="font-['inter'] bg-amber-300 px-4 py-1.5 rounded-2xl text-slate-950">
@@ -109,9 +109,9 @@ const OneNote = () => {
                 </button>
               </div>
               <div className="overflow-y-auto mt-4 scrollbar-none">
-                <p className="text-slate-400 text-justify font-['inter']">
+                <pre className="text-slate-400 text-justify font-['inter'] whitespace-pre-wrap wrap-anywhere">
                   {item.description}
-                </p>
+                </pre>
               </div>
             </div>
           ))
