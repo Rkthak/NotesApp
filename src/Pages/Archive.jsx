@@ -22,7 +22,7 @@ const Archive = () => {
   };
 
   return (
-    <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] lg:gap-0.5 gap-4 lg:pb-1 pb-18">
+    <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] lg:gap-0.5 gap-4 lg:pb-1 pb-24">
       {/* HeaderMessage Comp */}
       <HeaderMessage mainMessage={"Archive 📦"} />
 

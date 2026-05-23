@@ -106,7 +106,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] lg:gap-0.5 gap-4 lg:pb-1 pb-18">
+      <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] lg:gap-0.5 gap-4 lg:pb-1 pb-24">
         <div className="flex flex-wrap flex-col lg:flex-row gap-2">
           {/* HeaderMessage Comp */}
           <HeaderMessage
