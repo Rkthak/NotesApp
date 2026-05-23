@@ -33,7 +33,7 @@ const Archive = () => {
   return (
     <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] lg:gap-0.5  gap-4 lg:pb-1 pb-18">
       <HeaderMessage mainMessage={"Trash 🗑️"} />
-      <div className="scrollbar-none overflow-y-auto min-h-0 grid md:grid-cols-2 lg:mt-4 gap-4">
+      <div className="scrollbar-none overflow-y-auto min-h-0 grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 lg:mt-4  gap-4">
         {notes.filter((note) => note.isTrashed).length == 0 ? (
           <div className="w-full">
             <h3 className="font-['sora'] text-slate-400 text-xl capitalize">

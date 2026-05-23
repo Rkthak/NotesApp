@@ -12,7 +12,7 @@ const NotesCard = ({
   return (
     <>
       <div
-        className="bg-slate-800 border-2 border-slate-700 rounded-2xl p-3 h-fit  max-w-80 relative cursor-pointer"
+        className="bg-slate-800 border-2 border-slate-700 rounded-2xl p-3 h-fit relative cursor-pointer"
         title={title}
         onClick={(note) => handleNavigate?.(note)}
       >
@@ -51,7 +51,7 @@ const NotesCard = ({
               : note.description}
           </p>
 
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center flex-wrap gap-y-8">
             <button
               className="font-['sora'] text-slate-50 px-4 py-1 border-2 border-slate-700 bg-slate-900 font-semibold cursor-pointer rounded-xl"
               onClick={(e) => {
@@ -62,9 +62,9 @@ const NotesCard = ({
             >
               edit
             </button>
-            <div className="">
+            <div className="max-[350px]:flex  max-[350px]:w-full justify-between ml-3">
               <button
-                className="font-['sora'] text-slate-50 px-4 py-1 border-2 border-amber-400 bg-amber-400 font-semibold cursor-pointer rounded-xl ml-3 "
+                className="font-['sora'] text-slate-50 px-4 py-1 border-2 border-amber-400 bg-amber-400 font-semibold cursor-pointer rounded-xl  "
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();

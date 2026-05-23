@@ -26,7 +26,7 @@ const Archive = () => {
       {/* HeaderMessage Comp */}
       <HeaderMessage mainMessage={"Archive 📦"} />
 
-      <div className="scrollbar-none overflow-y-auto min-h-0 grid md:grid-cols-2 mt-4  gap-4">
+      <div className="scrollbar-none overflow-y-auto min-h-0 grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 lg:mt-4  gap-4">
         {notes.filter((note) => note.isArchived).length == 0 ? (
           <div className="w-full">
             <h3 className="font-['sora'] text-slate-400 text-xl capitalize">
