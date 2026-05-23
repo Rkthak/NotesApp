@@ -60,11 +60,12 @@ const EditeNote = () => {
         <input
           type="text"
           className="text-slate-50 font-['sora'] px-5 py-2 bg-slate-400 mb-3 rounded outline-none"
-          placeholder="title.."
+          placeholder="title.. (max 25 characters)"
           name="title"
           required
           value={editData.title}
           onChange={handleChange}
+          maxLength={25}
         />
         <textarea
           name="description"
@@ -79,12 +80,13 @@ const EditeNote = () => {
         <input
           type="text"
           className="text-slate-50 font-['sora'] px-5 py-2 bg-slate-400 mb-3 rounded outline-none"
-          placeholder="tag.."
+          placeholder="tag.. (max 8 characters)"
           name="tag"
           list="tagsList"
           required
           value={editData.tag}
           onChange={handleChange}
+          maxLength={8}
         />
         <datalist id="tagsList">
           <option value="personal">personal</option>
