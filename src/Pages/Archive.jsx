@@ -2,9 +2,13 @@ import { useContext } from "react";
 import { NotesContext } from "../Store/NotesContext";
 import HeaderMessage from "../Components/HeaderMessage";
 import NotesCard from "../Components/NotesCard";
+import { AlertContext } from "../Store/AlertContext";
 
 const Archive = () => {
   const { notes, setNotes } = useContext(NotesContext);
+
+  // alert ====>
+  const { setShowAlert, setAlertMessage } = useContext(AlertContext);
 
   const handleUnArchive = (e, id) => {
     setNotes(
@@ -12,6 +16,9 @@ const Archive = () => {
         note.id === id ? { ...note, isArchived: false } : note,
       ),
     );
+
+    setShowAlert(true);
+    setAlertMessage("note restored..!");
   };
 
   return (

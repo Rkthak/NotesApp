@@ -2,9 +2,13 @@ import { useContext } from "react";
 import { NotesContext } from "../Store/NotesContext";
 import HeaderMessage from "../Components/HeaderMessage";
 import NotesCard from "../Components/NotesCard";
+import { AlertContext } from "../Store/AlertContext";
 
 const Archive = () => {
   const { notes, setNotes } = useContext(NotesContext);
+
+  //  alert ===>
+  const { setShowAlert, setAlertMessage } = useContext(AlertContext);
 
   const handleRestore = (e, id) => {
     setNotes(
@@ -12,10 +16,18 @@ const Archive = () => {
         note.id === id ? { ...note, isTrashed: false } : note,
       ),
     );
+
+    // alert ===>
+    setShowAlert(true);
+    setAlertMessage("note restored..!");
   };
 
   const handleDelete = (e, id) => {
     setNotes(notes.filter((note) => note.id !== id));
+
+    // alert ===>
+    setShowAlert(true);
+    setAlertMessage("note deleted..!");
   };
 
   return (

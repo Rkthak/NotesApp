@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { NotesContext } from "../Store/NotesContext";
 import HeaderMessage from "../Components/HeaderMessage";
+import { AlertContext } from "../Store/AlertContext";
 
 const OneNote = () => {
   const { id } = useParams();
@@ -9,6 +10,9 @@ const OneNote = () => {
   const { notes, setNotes } = useContext(NotesContext);
 
   const [showActionBtns, setShowActionBtns] = useState(false);
+
+  // alert ===>
+  const { setShowAlert, setAlertMessage } = useContext(AlertContext);
 
   const handleShowActionBtns = (e) => {
     e.preventDefault();
@@ -22,6 +26,10 @@ const OneNote = () => {
         note.id === id ? { ...note, isArchived: true } : note,
       ),
     );
+
+    // alert ===>
+    setShowAlert(true);
+    setAlertMessage("note archived ..!");
   };
 
   const handleTrash = (id) => {
@@ -30,6 +38,10 @@ const OneNote = () => {
         note.id === id ? { ...note, isTrashed: true } : note,
       ),
     );
+
+    // alert ===>
+    setShowAlert(true);
+    setAlertMessage("note moved to trash..!");
   };
 
   const navigate = useNavigate();

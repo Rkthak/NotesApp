@@ -6,6 +6,8 @@ import MainLayout from "./Layout/MainLayout";
 import { NotesContextProvider } from "./Store/NotesContext";
 import OneNote from "./Pages/OneNote";
 import EditeNote from "./Pages/EditeNote";
+import { AlertContextProvider } from "./Store/AlertContext";
+import AlertToast from "./Components/AlertToast";
 
 const Router = createBrowserRouter([
   {
@@ -38,9 +40,12 @@ const Router = createBrowserRouter([
 
 const App = () => {
   return (
-    <NotesContextProvider>
-      <RouterProvider router={Router} />
-    </NotesContextProvider>
+    <AlertContextProvider>
+      <NotesContextProvider>
+        <AlertToast />
+        <RouterProvider router={Router} />
+      </NotesContextProvider>
+    </AlertContextProvider>
   );
 };
 

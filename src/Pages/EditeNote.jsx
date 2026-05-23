@@ -1,10 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { NotesContext } from "../Store/NotesContext";
+import { AlertContext } from "../Store/AlertContext";
 
 const EditeNote = () => {
   const { id } = useParams();
   const cardID = id.split("-")[1];
+
+  // alert ==>
+  const { setShowAlert, setAlertMessage } = useContext(AlertContext);
 
   // useNavigate
   const navigate = useNavigate();
@@ -51,6 +55,10 @@ const EditeNote = () => {
           : item,
       ),
     );
+
+    // alert ===>
+    setShowAlert(true);
+    setAlertMessage("note edited..!");
 
     navigate(`/${id}`);
   };

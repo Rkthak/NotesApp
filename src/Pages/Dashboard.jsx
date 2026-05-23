@@ -7,10 +7,14 @@ import { NotesContext } from "../Store/NotesContext";
 import { useNavigate } from "react-router";
 import TagsBtn from "../Components/TagsBtn";
 import Search from "../Components/Search";
+import { AlertContext } from "../Store/AlertContext";
 
 const Dashboard = () => {
   const [showForm, setShowForm] = useState(false);
   const { notes, setNotes } = useContext(NotesContext);
+
+  // Alert ===>
+  const { setShowAlert, setAlertMessage } = useContext(AlertContext);
 
   // search ====>
   const [searchVal, setSearchVal] = useState("");
@@ -54,6 +58,9 @@ const Dashboard = () => {
         note.id === id ? { ...note, isArchived: true } : note,
       ),
     );
+
+    setShowAlert(true);
+    setAlertMessage("note archived..!");
   };
 
   const handleTrash = (e, id) => {
@@ -62,14 +69,24 @@ const Dashboard = () => {
         note.id === id ? { ...note, isTrashed: true } : note,
       ),
     );
+
+    // alert ===>
+    setShowAlert(true);
+    setAlertMessage("note moved to trash..!");
   };
 
   const handlePinned = (e, id) => {
+    let pinned;
     setNotes(
-      notes.map((note) =>
+      (pinned = notes.map((note) =>
         note.id === id ? { ...note, isPinned: !note.isPinned } : note,
-      ),
+      )),
     );
+
+    // alert
+    pinned[0].isPinned
+      ? (setShowAlert(true), setAlertMessage("note pinned to top..!"))
+      : (setShowAlert(true), setAlertMessage("note unpin..!"));
   };
 
   const handleDisplayForm = () => {

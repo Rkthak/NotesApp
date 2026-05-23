@@ -1,11 +1,15 @@
 import { useContext, useState } from "react";
 import { NotesContext } from "../Store/NotesContext";
+import { AlertContext } from "../Store/AlertContext";
 
 const CreateNoteForm = ({ showForm, setShowForm, handleHideForm }) => {
   const now = new Date();
   const createdON = now.toLocaleString();
 
   const { setNotes, notes } = useContext(NotesContext);
+
+  // alert ===>
+  const { setShowAlert, setAlertMessage } = useContext(AlertContext);
 
   const [inputVal, setInputVal] = useState({
     id: "",
@@ -29,6 +33,10 @@ const CreateNoteForm = ({ showForm, setShowForm, handleHideForm }) => {
     });
 
     setShowForm(false);
+
+    // alert ===>
+    setShowAlert(true);
+    setAlertMessage("note created..!");
   };
 
   const handleInputChange = (evt) => {
