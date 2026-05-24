@@ -1,16 +1,79 @@
-# React + Vite
+# 📝 ThoughtStack - Notes Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and fast notes management application built with React JS. Easily create, organize, and manage your notes with features like tagging, filtering, pinning, and localStorage persistence. The clean and responsive UI is inspired by Google Keep.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+### Core Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Create & Manage Notes** – Add notes with a title and description
+- **Card Layout** – Clean and responsive card-based UI for displaying notes
+- **Expanded View** – View and edit notes in a modal or detailed page
+- **Search Functionality** – Instantly search notes by title or content
+- **Tag System** – Add multiple tags to notes and filter notes by tags
 
-## Expanding the ESLint configuration
+### Organization Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Pin Notes** – Keep important notes at the top
+- **Archive Notes** – Hide notes without permanently deleting them
+- **Trash System** – Deleted notes move to trash where they can be restored or permanently deleted
+- **LocalStorage Support** – All data is stored locally without requiring a backend
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology       | Purpose                                        |
+| ---------------- | ---------------------------------------------- |
+| React 18         | UI Library with Hooks                          |
+| TailwindCSS      | Styling and Responsive Design                  |
+| React Router DOM | Multi-page routing for Archive and Trash pages |
+| LocalStorage API | Data persistence                               |
+| Vite             | Build tool and development server              |
+
+---
+
+## 📦 Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Rkthak/NotesApp.git
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Start the Development Server
+
+```bash
+npm run dev
+```
+
+### 5. Open in Browser
+
+```bash
+http://localhost:5173
+```
+
+---
+
+## 📁 Project Structure
+
+```bash
+src/
+│── Components/
+│── Layout/ ---> Outlet
+│── Pages/
+│── Layout/
+│── Store/  ----> context APIs
+│── App.jsx
+│── main.jsx
+```
+
+---
