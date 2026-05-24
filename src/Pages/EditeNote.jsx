@@ -64,6 +64,14 @@ const EditeNote = () => {
   };
   return (
     <div className=" h-screen bg-slate-800 p-5">
+      <div className="flex justify-end mt-8">
+        <button
+          className=" bg-red-400 hover:shadow-red-200 hover:shadow-2xl hover:scale-90 transition-all px-5 py-1.5 rounded text-slate-50 cursor-pointer font-['sora']"
+          onClick={() => navigate(-1)}
+        >
+          Close
+        </button>
+      </div>
       <form className="flex flex-col p-5 mt-8 lg:mt-0" onSubmit={handleSubmit}>
         <input
           type="text"
