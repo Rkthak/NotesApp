@@ -12,7 +12,7 @@ const NotesCard = ({
   return (
     <>
       <div
-        className="bg-slate-800 border-2 border-slate-700 rounded-2xl p-3 h-fit relative cursor-pointer"
+        className="bg-slate-800 border-2 border-slate-700 rounded-2xl p-3 w-full md:max-w-78 lg:w-fit h-fit relative cursor-pointer"
         title={title}
         onClick={(note) => handleNavigate?.(note)}
       >

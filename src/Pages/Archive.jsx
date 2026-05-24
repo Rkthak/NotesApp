@@ -22,11 +22,11 @@ const Archive = () => {
   };
 
   return (
-    <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] lg:gap-0.5 gap-4 lg:pb-1 pb-24">
+    <div className="p-5 h-screen grid grid-rows-[auto_auto_1fr] gap-4 lg:pb-1 pb-24">
       {/* HeaderMessage Comp */}
       <HeaderMessage mainMessage={"Archive 📦"} />
 
-      <div className="scrollbar-none overflow-y-auto min-h-0 grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 lg:mt-4  gap-4">
+      <div className="scrollbar-none overflow-y-auto min-h-0 flex flex-wrap content-start gap-4">
         {notes.filter((note) => note.isArchived).length == 0 ? (
           <div className="w-full">
             <h3 className="font-['sora'] text-slate-400 text-xl capitalize">

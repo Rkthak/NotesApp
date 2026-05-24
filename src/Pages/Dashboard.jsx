@@ -121,7 +121,7 @@ const Dashboard = () => {
 
         {/* notes card  */}
 
-        <div className="scrollbar-none overflow-y-auto min-h-0 grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-4">
+        <div className="scrollbar-none overflow-y-auto min-h-0 flex flex-wrap content-start gap-4">
           {filteredNotes.length === 0 ? (
             <div className="w-full">
               <h3 className="font-['sora'] text-slate-50 font-semibold text-2xl capitalize">

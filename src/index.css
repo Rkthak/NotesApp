@@ -11,12 +11,28 @@ html {
 
 @media (min-width: 1280px) {
   html {
-    font-size: 18px; /* 1280px+ par sab 12.5% bada */
+    font-size: 18px;
   }
 }
 
 @media (min-width: 1536px) {
   html {
-    font-size: 28px; /* 1536px+ par 25% bada */
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 2000px) {
+  html {
+    font-size: 25px;
+  }
+}
+@media (min-width: 3000px) {
+  html {
+    font-size: 32px;
+  }
+}
+@media (min-width: 4000px) {
+  html {
+    font-size: 36px;
   }
 }
