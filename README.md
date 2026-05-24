@@ -4,6 +4,9 @@ A modern and fast notes management application built with React JS. Easily creat
 
 ---
 
+## 🚀 Live demo
+https://thoughtstack.netlify.app/
+
 ## ✨ Features
 
 ### Core Features
